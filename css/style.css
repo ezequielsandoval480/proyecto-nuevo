@@ -1,0 +1,152 @@
+
+*{
+	margin:0;
+	padding:0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;   
+}
+
+img{
+padding:10px;
+}
+
+body{
+background-image:#fff; 
+}
+/*buscador*/
+.icon-search{
+float:right;
+margin-top:-50px;
+margin-right: 20px;
+color:#01454f;
+}
+
+
+/*menu*/
+
+.navegacion{
+	width:100%;
+	margin:30px auto;
+	background:#01454f;
+}
+
+.navegacion ul{
+ list-style:none;
+}
+
+.menu> li{
+	/*position:relative*/
+	display:inline-block;
+}
+
+.menu>li>a{
+  display:block;
+  padding:15px;
+  color:#fff;
+  font-family: Open sans;
+  text-decoration:none;
+}
+
+.menu li a:hover{
+	color:#9c9c9c;
+	transition: all 3s;
+}
+
+/*submenu*/
+.sub-nav{
+position:absolute;
+background-color:#01454f;
+visibility:hidden;
+opacity:0;
+transition: opacity 1.5s;
+z-index: 3;
+}
+
+.sub-nav li a{
+display:block;
+padding:15px;
+color:#fff;
+font-family:Open sans;
+text-decoration:none;
+}
+
+.menu li:hover .sub-nav{
+visibility: visible;
+opacity:1;
+
+}
+
+/*submenu del submenu*/
+.sub-sub-nav{
+position:absolute;
+background-color:#01454f;
+visibility:hidden;
+z-index:3;
+}
+.sub-nav li:hover .sub-sub-nav{
+visibility: visible;
+margin-left:80px;
+margin-top:-52px;
+}
+
+/*Banner*/
+
+.banner{
+width:100%;
+height: 300px; 
+margin-top:-30px;
+background-size: 100%;
+animation:banner 10s infinite;
+
+
+}
+
+@keyframes banner {
+	0%{
+		background-image: url(banner/IMG_2419.JPG);
+
+	}
+	
+	25%{
+		background-image: url(banner/IMG_2420.JPG);
+		
+	}
+	50%{
+		background-image: url(banner/IMG_2422.JPG);
+
+	}
+
+	100%{
+		background-image: url(banner/IMG_2423.JPG);
+
+	}
+}
+
+	
+	
+.banner-content{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:300px;
+	color:#fff;
+	font-family:open sans;
+	background-color: rgba(50,130,102,.7);
+	display:flex;
+	align-items: center;
+	position:relative;
+	z-index: 2;
+}
+
+.banner-content .titulo1, .titulo3, .titulo4{
+font-size: 30px;
+margin:0 100px;
+margin-left:170px;
+border: 1px solid white;
+padding:15px;
+overflow:hidden;
+z-index: 8;
+}
+
+

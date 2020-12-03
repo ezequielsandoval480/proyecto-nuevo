@@ -1,0 +1,248 @@
+/*boton menu*/
+
+.button-menu{
+display:none;
+}
+
+/*Registro*/
+.icon-user{
+position:absolute;
+color:#01454f;
+margin:auto;
+margin-top:-50px; 
+margin-left: 150px;
+
+}
+/*formulario*/
+.contenedor-form{
+	background:rgba(0,0,0,.7);
+	width: 100%;
+	max-width: 500px;
+	margin:48px auto;
+	color:#fff;
+	border-radius:5px;
+	position:absolute;
+	background: rgba(0,0,0,0.8);
+	top:50%;
+    left:50%;
+    margin-left: -220px;
+    margin-top:-175px;
+	z-index:4;
+
+}
+
+.contenedor-form .toggle{
+	width:100px;
+	height: 30px;
+	font-size:16px;
+	position:relative;
+	text-align:right;
+	transition: all 1s ease;
+	cursor:pointer;
+	font-family:Open sans;
+}
+
+.contenedor-form .toggle:hover{
+	color:#9c9c9c;
+}
+
+.contenedor-form h2{
+  margin:0 0 28px 0;
+  font-size: 20px;
+  font-family:Open sans, sans serif;
+}
+
+.contenedor-form input[type="text"],
+.contenedor-form input[type="password"],
+.contenedor-form input[type="email"]{
+outline:none;
+background: rgba(0,0,0,.5);
+display:block;
+width:100%;
+padding:10px 15px;
+color:#fff;
+border:none;
+border-radius:2px;
+border-bottom:4px solid #01454f;
+margin:0 0 20px 0;
+transition: all .5s ease;
+}
+
+.contenedor-form input[type="text"]:focus,
+.contenedor-form input[type="password"]:focus,
+.contenedor-form input[type="email"]:focus{
+	border-bottom: 4px solid #fff;
+}
+
+.contenedor-form input[type="submit"]{
+	background:#01454f;
+	color:#fff;
+	border:none;
+	width:100%;
+	padding:10px 0;
+	font-family:Open sans;
+	font-size:16px;
+	cursor:pointer;
+	transition: all 2s ease;
+}
+
+.contenedor-form input[type="submit"]:hover{
+	background:#9c9c9c;
+}
+
+.contenedor-form .reset-password{
+	background:#9c9c9c;
+	color:#fff;
+	width:100%;
+	padding:15px;
+	text-align:center;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.contenedor-form .reset-password a{
+	color:#fff;
+	text-decoration:none;
+	font-size: 16px;
+}
+
+.contenedor-form .form{
+	padding:40px;
+	display:none;
+}
+
+.contenedor-form .form:nth-child(2n +1){
+	padding:40px;
+	display:block;
+}
+
+/* menu reducido*/
+
+@media(max-width:768px){
+
+
+header label{
+	display:block;
+	background:  #01454f;
+
+}
+
+.button-menu{
+display:block;
+color:#fff;
+}
+
+.button-menu .bt-menu{
+display:block;
+color:#fff;
+background: #024959;
+padding:30px;
+text-decoration: none;
+font-size:25px;
+overflow: hidden;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-box-sizing:border-box;	
+}
+
+.button-menu span{
+	float:right;
+	font-size:20px;
+}
+
+
+
+header .navegacion{
+	width: 40%;
+	height: calc(100% - 80px);
+	position:fixed;
+	margin:0;
+	overflow:scroll;
+	
+
+}
+
+header .navegacion ul li{
+	display:block;
+	border-bottom:1px solid #fff;
+}
+
+header .navegacion ul li a {
+	display:block;
+	border-bottom:1px solid #fff;
+}
+
+
+
+
+.navegacion {
+	display:block;
+	position:relative;
+	background:  #01454f;
+	transition:all 0.5s;
+	z-index: 9;
+	margin-left:0px;
+
+
+}
+
+.navegacion li:hover{
+display:block;
+width:100%;
+
+}
+
+.navegacion li:hover> ul{
+display:block;
+width: 100%;
+
+}
+
+.navegacion li ul li ul{
+	left:-75px;
+	top:107px;
+    position:absolute;
+    z-index:10;
+}
+
+
+
+
+
+
+.banner{
+	width: 100%;
+	margin-top:0px;
+
+}
+
+.banner-content{
+	width: 100%;
+}
+
+
+
+
+.banner-content   .titulo3  {
+display:none;
+
+}
+
+.banner-content   .titulo4  {
+display:none;
+
+}
+
+
+.banner-content   .titulo1{
+margin:0 100px;
+margin-left:140px;
+border: 1px solid white;
+padding:15px;
+overflow:hidden;
+z-index: 8;
+
+
+
+}
+}

@@ -1,0 +1,52 @@
+.sesion{
+	width:90%;
+	height:100px;
+	min-height:700px;
+	background-color:none;
+	border:none;
+	padding:none;
+	margin: 0 auto;
+	margin-left:10px;
+	margin-top:10px;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+
+.producto{
+width:22%;
+height: 260px;
+margin:20px;
+background-color:#fff;
+border:2px solid #9c9c9c;
+border-radius: 1em;
+list-style: none;
+padding:2px;
+display:flex;
+flex-wrap: wrap;
+justify-content: space-around;
+transition:all 0.3s ease;
+}
+
+
+.producto img{
+width: 150px;
+height: 100px; 
+}
+
+
+ h3{
+font-family: verdana;
+font-size: 12px;
+padding:2px;
+margin:5px 55px;
+color:#9c9c9c;
+object-fit: cover;
+}
+
+.producto input{
+margin-top:0px;
+padding:0;
+margin:20px 40px;
+
+}

@@ -1,0 +1,75 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,300&display=swap');
+
+/* UNIVERSAL */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+
+}
+
+/* ROOT FONT STYLES */
+*{
+	scroll-behavior: smooth;
+}
+
+
+/* TYPOGRAPHY */
+
+.center{
+text-align: center;
+}
+
+section{
+width:100%;
+height: 600px;
+padding:60px;
+color:#fff;
+text-align: center;
+
+}
+
+
+h1 {
+  font-size: 3.5rem;
+  font-family:Open sans;
+}
+
+h2 {
+  font-size: 2rem;
+  font-family:Open sans;
+
+}
+
+
+.uno{
+background-image: linear-gradient(-225deg, #B7F8DB 0%, #01454f 100%);
+}
+
+.dos{
+
+background-image: linear-gradient(-225deg, #9c9c9c 0%, #D7FFFE 100%);
+
+
+}
+
+.tres{
+background-image: linear-gradient(-225deg, #B7F8DB 0%, #50A7C2 100%);
+}
+
+.cuatro{
+background-image: linear-gradient(-225deg, #9c9c9c 0%, #D7FFFE 100%);
+
+
+}
+
+
+
+
+
