@@ -1,25 +1,28 @@
 <?php
-include "conexiondb/conexion.php";
-include"cabecera.php";
-$sql="SELECT * from marcas where id=".$_GET['id'];
-$re=$cn->query($sql);
-
-while ($f=$re->fetch_array()){
+include "cart.php";
+include"templates/cabecera.php";
  ?>
+<?php
+$sentencia=$pdo->prepare ("SELECT * from marcas where id=".$_GET['id']);
+$sentencia->execute();
+$listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+?>
 
- <link rel="stylesheet" href="css/inicio.css">
+<?php foreach ($listaProductos as $producto) { ?>
 
- <h2><?php echo $f['Nombre'] ?></h2>
+ <h2><?php echo $producto['Nombre'] ?></h2>
  <style> 
 
  h2{
  	margin:50px;
- 	font-family:Open sans;
+ 	font-family:Verdana;
  	color:#01454f;
  }
 
  </style>
  <?php  
- include "index.php";
+include "index.php";
+include "templates/pie.php";
+
 }
  ?>

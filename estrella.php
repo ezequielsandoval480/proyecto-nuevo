@@ -1,64 +1,68 @@
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="css/estrella.css">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Star rating using pure CSS</title>
+</head>
 
-<!-- RATING - Form -->
-<form class="rating-form" action="#" method="post" name="rating-movie">
-  <fieldset class="form-group">
-    
-    <legend class="form-legend">Rating:</legend>
-    
-    <div class="form-item">
-      
-      <input id="rating-5" name="rating" type="radio" value="5" />
-      <label for="rating-5" data-value="5">
-        <span class="rating-star">
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star"></i>
-        </span>
-        <span class="ir">5</span>
-      </label>
-      <input id="rating-4" name="rating" type="radio" value="4" />
-      <label for="rating-4" data-value="4">
-        <span class="rating-star">
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star"></i>
-        </span>
-        <span class="ir">4</span>
-      </label>
-      <input id="rating-3" name="rating" type="radio" value="3" />
-      <label for="rating-3" data-value="3">
-        <span class="rating-star">
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star"></i>
-        </span>
-        <span class="ir">3</span>
-      </label>
-      <input id="rating-2" name="rating" type="radio" value="2" />
-      <label for="rating-2" data-value="2">
-        <span class="rating-star">
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star"></i>
-        </span>
-        <span class="ir">2</span>
-      </label>
-      <input id="rating-1" name="rating" type="radio" value="1" />
-      <label for="rating-1" data-value="1">
-        <span class="rating-star">
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star"></i>
-        </span>
-        <span class="ir">1</span>
-      </label>
-      
-      <div class="form-action">
-        <input class="btn-reset" type="reset" value="Reset" />   
-      </div>
+<body>
 
-      <div class="form-output">
-        ? / 5
-      </div>
-      
-    </div>
-    
-  </fieldset>
-</form>
+  <div class="rate">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+
+</body>
+
+</html>
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    margin-left:620px;    
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+</style>

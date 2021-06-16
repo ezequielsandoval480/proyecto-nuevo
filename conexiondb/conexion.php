@@ -1,10 +1,15 @@
 <?php 
 
-$host = "localhost";
-$usuario = "root";
-$clave = "";
-$db = "carritonuevo";
-$cn= new mysqli($host, $usuario, $clave, $db) or die ("no se puede establecer la conexion");
-$sdb=mysqli_select_db($cn,$db) or die("la base de datos no existe");
+$servidor="mysql:dbname=".BD.";host=".SERVIDOR;
+
+try{
+
+$pdo= new PDO($servidor, USUARIO,PASSWORD,
+      array(PDO::MYSQL_ATTR_INIT_COMMAND=> "SET NAMES utf8")
+);
+echo "<script> alert('Conectado...')</script>";
+}catch (PDOException $e){
+echo "<script> alert('Error...')</script>";
+}
 
  ?>

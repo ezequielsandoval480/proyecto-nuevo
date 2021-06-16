@@ -1,81 +1,95 @@
 <?php 
-include"cabecera.php";
- ?>
-   
-	<link rel="stylesheet" href="css/modal.css">
-<body> 
+session_start();
 
-<section class="sesion">
+$mensaje="";
+
+if(isset($_POST['btnAccion'])){
+  switch (($_POST['btnAccion'])){
+    
+    case 'Agregar':
+
+    if(is_numeric( openssl_decrypt($_POST['id'],COD,KEY))){
+      $ID=openssl_decrypt($_POST['id'], COD,KEY);
+      $mensaje.="Ok ID correcto".$ID."<br/>";
+    } else{
+      $mensaje.="Upss... ID incorrecto".$ID."<br/>";
+    }
  
-<?php 
-//se realiza la conexión con el localhost
+    if(is_string( openssl_decrypt($_POST['Nombre'],COD,KEY))){
+      $Nombre=openssl_decrypt($_POST['Nombre'],COD,KEY);
+      $mensaje.="Ok Nombre".$Nombre."<br/>";
 
-include"conexiondb/conexion.php";
-$re=$cn->query("select * from comprass where id=".$_GET['id']) or die();
-while ($f=$re->fetch_array())
-{
- ?>
- 
-<link rel="stylesheet" href="bootstrap-4.5.3-dist">
-<table class="table">
-  <thead class="thead-dark">
+    }else{ $mensaje.="Ups algo pasa con el nombre"."<br/>"; break;}
 
-    <tr>
-      <th scope="col">Producto</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Subtotal</th>
-       <th scope="col">Eliminar</th>
-    </tr>
-  </thead>
-  <tbody>
+    if(is_string( openssl_decrypt($_POST['Cantidad'],COD,KEY))){
+      $Cantidad=openssl_decrypt($_POST['Cantidad'],COD,KEY);
+      $mensaje.="Ok Cantidad".$Cantidad."<br/>";
 
-    <tr>
-      <td><img src="./productos/<?php echo $f ['imagen'];?>" width="120" alt="..."></td></td>
-      <td class="pt-5"><?php echo $f['precio'];?></td>
-      <td class="pt-5"><input type="number" class="form-control" name="cant" value="1"></td>
-      <td class="pt-5"><?php echo $f['precio'];?></td>
-      <td class="pt-5"><button class="btn btn-danger" id="btn-delete"><i class="icon ion-md-trash"></i></button></td>
-    </tr>
-  
-  </tbody>
-</table>
-
-<a href="" class="btn btn" >Seguir comprando</a>
-<h2 class="text-right">Total<span></span></h2>
-<script>
-	$(function(){
-		$(document).on("click", "#btn-delete", function(){
-			$(this).parent().parent().remove();
-		});
-
- 
-	$(document).on("keyup","input[name*=cant]",function(){
-	
-	var Subtutal=$(this).val()*$(this).closest("tr").find("td:eq(1)").html();
-			
-			(this).closest("tr").find("td:eq(3)").html(Subtutal.toFixed(2));
-		});
-
-	})
-
-</script>
-    <?php
-   
-
-    //se direcciona a categorías.php (se ubica en las distintas marcas (mbenz,peugeot,etc))
-  }
+    }else{ $mensaje.="Ups algo pasa con la cantidad"."<br/>"; break;}
 
     
-   ?>
-
-<?php 
-include "pie.php";
-
- ?>
-
+    if(is_string( openssl_decrypt($_POST['precio'],COD,KEY))){
+      $Precio=openssl_decrypt($_POST['precio'],COD,KEY);
+      $mensaje.="Ok precio".$Precio."<br/>";
+    }else{ $mensaje.="Ups algo pasa con el precio"."<br/>"; break;}
+      
   
-</section>
+  if(!isset($_SESSION['carrito'])){
 
-</body>
-</html>
+    $producto=array(
+    'id'=>$ID,
+    'Nombre'=>$Nombre,
+    'Cantidad'=>$Cantidad,
+    'precio'=>$Precio
+    );
+    $_SESSION['carrito'][0]=$producto;
+    $mensaje="Producto agregado al carrito";
+
+  }else{
+
+    $idProductos=array_column($_SESSION['carrito'],"id");
+    if(in_array($ID,$idProductos)){
+      echo"<script>alert('El producto ya ha sido seleccionado');</script>";
+
+    }else{
+
+
+
+    $NumerosProductos=count($_SESSION['carrito']);
+    $producto=array(
+    'id'=>$ID,
+    'Nombre'=>$Nombre,
+    'Cantidad'=>$Cantidad,
+    'precio'=>$Precio
+    );
+
+    $_SESSION['carrito'][$NumerosProductos]=$producto;
+
+   $mensaje= print_r($_SESSION,true);
+    
+       }
+    }
+
+    break;
+    case "Eliminar";
+    if(is_numeric(openssl_decrypt($_POST['id'],COD,KEY))){
+      $ID=openssl_decrypt($_POST['id'],COD,KEY);
+
+    foreach ($_SESSION['carrito'] as $indice=>$producto) {
+      if($producto['id']==$ID){
+        unset($_SESSION['carrito'][$indice]);
+        echo "<script>alert('Elemento borrado...');</script>";
+
+      }
+    }
+    } else{
+      $mensaje.="Upss... ID incorrecto".$ID."<br/>";
+    }
+
+    break;
+  }
+}
+ ?>
+<?php 
+include "templates/pie.php";
+ ?>

@@ -1,54 +1,37 @@
 <?php 
-include"conexiondb/conexion.php";
-//Recibo los datos y los almaceno en variables
+include"conexiondb/con.php";
 
-$usuario = $_POST['usuario'];
+if(isset($_POST['Registrarse'])){
+	if(strlen($_POST['usuario'])>=1 && strlen($_POST['password'])>=1 && strlen($_POST['correo'])>=1 && strlen($_POST['Teléfono'])>=1){
 
-$password = $_POST['password'];
+		//Recibo los datos y los almaceno en variables
+        $usuario = trim($_POST['usuario']);
 
-$correo = $_POST['correo'];
+        $password = trim($_POST['password']);
 
-$Teléfono = $_POST['Teléfono'];
+        $correo = trim($_POST['correo']);
 
-//consulta para insertar
-$insertar="INSERT into usuarios (usuario, password,correo, Teléfono) VALUES ('$usuario', '$password' ,'$correo' ,'$Teléfono')"; 
-//Ejecutar consulta
-$re=$cn->query($insertar);
+        $Teléfono = trim($_POST['Teléfono']);
 
-//$verificar_usuario= $cn->query( "SELECT * FROM usuarios WHERE usuario= '$usuario'");
+        //consulta para insertar
+        $insertar="INSERT INTO usuarios (usuario, password,correo, Teléfono) VALUES ('$usuario', '$password' ,'$correo' ,'$Teléfono')"; 
 
-//if(mysqli_num_rows($verificar_usuario)>0){
-//	echo '<script> alert("El usuario ya esta registrado");window.history.go(-1)</script>';
-//	exit;
-//}
+        $resultado=$cn->query( $insertar);
 
-//$verificar_password= $cn->query( "SELECT * FROM usuarios WHERE password= '$password'");
+        if (empty($usuario) or empty($password) or empty($correo) or empty($Teléfono)){ 
+        $errores='<li>Por favor rellena todos los datos</li>';
+        }
 
-//if(mysqli_num_rows($verificar_password)>0){
-//	echo '<script> alert("La contraseña ya esta registrado");window.history.go(-1)</script>';
-//	exit;
-//}
-
-//$verificar_correo= $cn->query( "SELECT * FROM usuarios WHERE correo= '$correo'");
-
-//if(mysqli_num_rows($verificar_correo)>0){
-//	echo '<script> alert("El correo ya esta registrado");window.history.go(-1)</script>';
-//	exit;
-//}
-
-//$verificar_Telefono= $cn->query( "SELECT * FROM usuarios WHERE Teléfono= '$Teléfono'");
-
-//if(mysqli_num_rows($verificar_Telefono)>0){
-//	echo '<script> alert("El teléfono ya esta registrado");window.history.go(-1)</script>';
-//	exit;
-//}
-
-//ejecutar consulta
-if(!$re){
-	echo 'Error al registrarse';
-}else{
-	echo '<script> alert("Usted ha sido registrado exitosamente");window.history.go(-1)</script>';
+        //ejecutar consulta
+        if(!$resultado){
+		echo 'Error al registrarse';
+		}else{
+		echo '<script> alert("Usted ha sido registrado exitosamente");window.history.go(-2)</script>';
+}  
+        
+	}
 }
+
 //cerrar sesión
 //msql_close($cn);
 

@@ -12,6 +12,7 @@ include("cabecera.php");
  <link rel="stylesheet" href="css/modal.css">
 <?php 
 //se realiza la conexión con el localhost
+include("conexiondb/config.php")
 include"conexiondb/conexion.php";
 $re=$cn->query("select * from comprass where id=".$_GET['id']) or die ("error");
  while ($f=$re->fetch_array())
