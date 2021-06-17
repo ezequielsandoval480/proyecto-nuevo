@@ -1,5 +1,4 @@
-
-    //animación del registro de usuario
+  //animación del registro de usuario
     $('.toggle').click(function(){
         $('.form').animate({
             height:"toggle",
@@ -8,4 +7,3 @@
             'opacity': 'toggle'
         }, "slow");
     });
-
